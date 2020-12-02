@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="920" height="620" version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <defs>
+        <symbol id="star">
+            <!-- A star, center (100, 100), radius 90. The center cannot be (0, 0), because in IE and Firefox, the part of picture located at negative coordinate is not filled. -->
+            <path d="M 100 10 L 47.1 172.8 L 185.6 72.2 L 14.4 72.2 L 152.9 172.8 L 100 10 Z" fill="yellow" />
+        </symbol>
+    </defs>
+
+    <g>
+        <rect x="10" y="10" width="900" height="600" fill="red" />
+        <!-- translators are applied from right to left. -->
+        <use xlink:href="#star" transform="translate(150, 150) translate(-100, -100)" />
+        <use xlink:href="#star" transform="translate(300, 60) scale(0.333) rotate(-121) translate(-100, -100)" />
+        <use xlink:href="#star" transform="translate(360, 120) scale(0.333) rotate(-98) translate(-100, -100)" />
+        <use xlink:href="#star" transform="translate(360, 210) scale(0.333) rotate(-74) translate(-100, -100)" />
+        <use xlink:href="#star" transform="translate(300, 270) scale(0.333) rotate(-51) translate(-100, -100)" />
+    </g>
+
+</svg>

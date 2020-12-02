@@ -1,0 +1,23 @@
+#include "WinUser.h"
+
+#include "resource.h"
+
+DLG_SCRNSAVECONFIGURE DIALOGEX 0, 0, 136, 74
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lasyard Screen Saver Settings"
+FONT 12, "System", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON "OK", IDOK, 5, 55, 56, 14
+    PUSHBUTTON    "Cancel", IDCANCEL, 75, 55, 56, 14
+    SCROLLBAR     IDC_SCROLL_SPEED, 5, 23, 126, 12
+    LTEXT         "Slow", IDC_STATIC, 6, 37, 17, 8
+    LTEXT         "Fast", IDC_STATIC, 112, 37, 15, 8
+    LTEXT         "Spinning Speed", IDC_STATIC, 42, 7, 51, 8
+END
+
+ID_APP ICON "favicon.ico"
+
+STRINGTABLE
+BEGIN
+    IDS_DESCRIPTION "Lasyard Screen Saver"
+END

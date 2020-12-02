@@ -1,0 +1,8 @@
+.*
+!.gitignore
+!.editorconfig
+
+# IntelliJ IDEA
+!.idea/
+*/.idea/modules.xml
+*.iml

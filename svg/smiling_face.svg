@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="300" height="300" version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g stroke="black" stroke-width="2px">
+        <circle cx="150" cy="150" r="100" fill="yellow" />
+        <circle cx="115" cy="120" r="18" fill="black" />
+        <circle cx="185" cy="120" r="18" fill="black" />
+        <path d="M 110 190 q 40 30 80 0 q -40 15 -80 0 Z" stroke="red" fill="red" />
+    </g>
+
+</svg>
