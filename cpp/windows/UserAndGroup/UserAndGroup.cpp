@@ -26,8 +26,11 @@ IWbemServices *UserAndGroup::connectServer()
     IWbemServices *pWbemServices = NULL;
     IWbemLocator *pIWbemLocator = NULL;
 
-    hRes = CoCreateInstance(CLSID_WbemAdministrativeLocator, NULL, CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER,
-                            IID_IUnknown, (void **)&pIWbemLocator);
+    hRes = CoCreateInstance(CLSID_WbemAdministrativeLocator,
+                            NULL,
+                            CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER,
+                            IID_IUnknown,
+                            (void **)&pIWbemLocator);
     if (FAILED(hRes))
         return NULL;
 
@@ -43,8 +46,14 @@ IWbemServices *UserAndGroup::connectServer()
     if (FAILED(hRes))
         return NULL;
 
-    hRes = CoSetProxyBlanket(pWbemServices, RPC_C_AUTHN_WINNT, RPC_C_AUTHZ_NONE, NULL, RPC_C_AUTHN_LEVEL_CALL,
-                             RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE);
+    hRes = CoSetProxyBlanket(pWbemServices,
+                             RPC_C_AUTHN_WINNT,
+                             RPC_C_AUTHZ_NONE,
+                             NULL,
+                             RPC_C_AUTHN_LEVEL_CALL,
+                             RPC_C_IMP_LEVEL_IMPERSONATE,
+                             NULL,
+                             EOAC_NONE);
     if (FAILED(hRes)) {
         pWbemServices->Release();
         return NULL;
@@ -66,10 +75,10 @@ HRESULT UserAndGroup::enumInstance(const _bstr_t &className,
     IWbemClassObject *pWbemClassObject;
     ULONG ulReturned = 0;
     for (;;) {
-        hRes = pEnumWbemClassObject->Next(1000, // timeout
-                                          1,    // return just one
-                                          &pWbemClassObject,
-                                          &ulReturned // number obtained
+        hRes = pEnumWbemClassObject->Next(1000,              // timeout
+                                          1,                 // return just one
+                                          &pWbemClassObject, //
+                                          &ulReturned        // number obtained
         );
         if (FAILED(hRes))
             break;

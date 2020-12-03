@@ -4,8 +4,8 @@
 
 #define MAP_SIZE_X 8
 #define MAP_SIZE_Y 4
-#define START_X 0
-#define START_Y 0
+#define START_X    0
+#define START_Y    0
 
 static int map[MAP_SIZE_Y][MAP_SIZE_X];
 static int steps;

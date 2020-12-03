@@ -10,12 +10,12 @@
 
 #define random(x) (rand() % (x))
 
-#define HEIGHT 15
+#define HEIGHT    15
 #define BASE_LINE (HEIGHT + 5)
-#define COIN "====="
-#define SPACE "     "
-#define WIDTH 5
-#define GAP (WIDTH + 1)
+#define COIN      "====="
+#define SPACE     "     "
+#define WIDTH     5
+#define GAP       (WIDTH + 1)
 
 struct game {
     void (*turn)(struct game *g);

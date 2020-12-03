@@ -211,8 +211,17 @@ int WINAPI WinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR cmd, int show)
     wce.lpszClassName = wndClassName;
     wce.hIconSm = NULL;
     RegisterClassEx(&wce);
-    hWnd = CreateWindow(wndClassName, TEXT("Raw Mouse Test"), WS_TILEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-                        CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL, hIns, 0);
+    hWnd = CreateWindow(wndClassName,
+                        TEXT("Raw Mouse Test"),
+                        WS_TILEDWINDOW,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        NULL,
+                        NULL,
+                        hIns,
+                        0);
     if (hWnd != NULL) {
         ShowWindow(hWnd, show);
         for (; GetMessage(&msg, NULL, 0, 0);) {

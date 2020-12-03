@@ -50,8 +50,8 @@ static LONG saveParasReg(int speed)
     LONG r;
     HKEY hKey;
     DWORD value;
-    r = RegCreateKeyEx(HKEY_CURRENT_USER, REG_MAIN_KEY, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hKey,
-                       &value);
+    r = RegCreateKeyEx(
+        HKEY_CURRENT_USER, REG_MAIN_KEY, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hKey, &value);
     if (r != ERROR_SUCCESS)
         return r;
     r = RegSetValueEx(hKey, REG_SPEED_KEY, 0, REG_DWORD, (BYTE *)&speed, sizeof(DWORD));

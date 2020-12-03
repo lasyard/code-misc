@@ -28,8 +28,15 @@ static void backupRawMouse(HDC hDC, int index)
 {
     if (!g_mouse[index].visible)
         return;
-    BitBlt(g_mouse[index].hDC, 0, 0, g_mouse[index].cx, g_mouse[index].cy, hDC, g_mouse[index].x - g_mouse[index].xHot,
-           g_mouse[index].y - g_mouse[index].yHot, SRCCOPY);
+    BitBlt(g_mouse[index].hDC,
+           0,
+           0,
+           g_mouse[index].cx,
+           g_mouse[index].cy,
+           hDC,
+           g_mouse[index].x - g_mouse[index].xHot,
+           g_mouse[index].y - g_mouse[index].yHot,
+           SRCCOPY);
 }
 
 static void backupAllRawMouse(HDC hDC)
@@ -45,8 +52,15 @@ static void drawRawMouse(HDC hDC, int index)
 {
     if (g_mouse[index].hDev == NULL || !g_mouse[index].visible)
         return;
-    DrawIconEx(hDC, g_mouse[index].x - g_mouse[index].xHot, g_mouse[index].y - g_mouse[index].yHot,
-               g_mouse[index].hIcon, g_mouse[index].cx, g_mouse[index].cy, 0, NULL, DI_NORMAL | DI_COMPAT);
+    DrawIconEx(hDC,
+               g_mouse[index].x - g_mouse[index].xHot,
+               g_mouse[index].y - g_mouse[index].yHot,
+               g_mouse[index].hIcon,
+               g_mouse[index].cx,
+               g_mouse[index].cy,
+               0,
+               NULL,
+               DI_NORMAL | DI_COMPAT);
 }
 
 static void drawAllRawMouse(HDC hDC)
@@ -62,8 +76,15 @@ static void eraseRawMouse(HDC hDC, int index)
 {
     if (g_mouse[index].hDev == NULL || !g_mouse[index].visible)
         return;
-    BitBlt(hDC, g_mouse[index].x - g_mouse[index].xHot, g_mouse[index].y - g_mouse[index].yHot, g_mouse[index].cx,
-           g_mouse[index].cy, g_mouse[index].hDC, 0, 0, SRCCOPY);
+    BitBlt(hDC,
+           g_mouse[index].x - g_mouse[index].xHot,
+           g_mouse[index].y - g_mouse[index].yHot,
+           g_mouse[index].cx,
+           g_mouse[index].cy,
+           g_mouse[index].hDC,
+           0,
+           0,
+           SRCCOPY);
 }
 
 static void eraseAllRawMouse(HDC hDC)
@@ -266,7 +287,9 @@ void hideAllRawMouse(HWND hWnd)
 static int testRawMouseButton(HWND hWnd, int index, USHORT flag, USHORT state, UINT msg)
 {
     if (IS_SET(flag, state)) {
-        PostMessage(hWnd, msg, (WPARAM)((index << sz_RAW_MOUSE_STATE) | g_mouse[index].state.ch),
+        PostMessage(hWnd,
+                    msg,
+                    (WPARAM)((index << sz_RAW_MOUSE_STATE) | g_mouse[index].state.ch),
                     (LPARAM)(g_mouse[index].y << 16 | g_mouse[index].x));
         return 1;
     } else {
@@ -294,7 +317,9 @@ static void updateRawMousePos(HWND hWnd, int index, int dx, int dy)
     backupRawMouse(hDC, index);
     drawAllRawMouse(hDC);
     ReleaseDC(hWnd, hDC);
-    PostMessage(hWnd, RAW_MOUSE_MOVE, (WPARAM)((index << sz_RAW_MOUSE_STATE) | g_mouse[index].state.ch),
+    PostMessage(hWnd,
+                RAW_MOUSE_MOVE,
+                (WPARAM)((index << sz_RAW_MOUSE_STATE) | g_mouse[index].state.ch),
                 (LPARAM)(g_mouse[index].y << 16 | g_mouse[index].x));
 }
 
@@ -330,23 +355,23 @@ LRESULT processRawMouse(HWND hWnd, HRAWINPUT hri)
             }
         }
     } else {
-        if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_LEFT_BUTTON_DOWN,
-                               RAW_MOUSE_LEFT_DOWN)) {
+        if (testRawMouseButton(
+                hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_LEFT_BUTTON_DOWN, RAW_MOUSE_LEFT_DOWN)) {
             g_mouse[i].state.left = 1;
         }
         if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_LEFT_BUTTON_UP, RAW_MOUSE_LEFT_UP)) {
             g_mouse[i].state.left = 0;
         }
-        if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_MIDDLE_BUTTON_DOWN,
-                               RAW_MOUSE_MIDDLE_DOWN)) {
+        if (testRawMouseButton(
+                hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_MIDDLE_BUTTON_DOWN, RAW_MOUSE_MIDDLE_DOWN)) {
             g_mouse[i].state.mid = 1;
         }
-        if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_MIDDLE_BUTTON_UP,
-                               RAW_MOUSE_MIDDLE_UP)) {
+        if (testRawMouseButton(
+                hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_MIDDLE_BUTTON_UP, RAW_MOUSE_MIDDLE_UP)) {
             g_mouse[i].state.mid = 0;
         }
-        if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_RIGHT_BUTTON_DOWN,
-                               RAW_MOUSE_RIGHT_DOWN)) {
+        if (testRawMouseButton(
+                hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_RIGHT_BUTTON_DOWN, RAW_MOUSE_RIGHT_DOWN)) {
             g_mouse[i].state.right = 1;
         }
         if (testRawMouseButton(hWnd, i, raw->data.mouse.usButtonFlags, RI_MOUSE_LEFT_BUTTON_UP, RAW_MOUSE_LEFT_UP)) {

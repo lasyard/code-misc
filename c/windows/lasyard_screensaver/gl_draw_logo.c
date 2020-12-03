@@ -9,11 +9,11 @@
 #define PI 3.1415926
 
 /* Parameter of logo */
-#define WIDTH 2.5                      /* Size of square */
-#define RADIUS 5.0                     /* Radius of logo */
-#define SLICE 500                      /* Number of slices */
-#define VISION 10.0                    /* Size of visual field */
-#define DIAG (sqrt(2.0) * WIDTH / 2.0) /* Half diagonal size of square */
+#define WIDTH  2.5                       /* Size of square */
+#define RADIUS 5.0                       /* Radius of logo */
+#define SLICE  500                       /* Number of slices */
+#define VISION 10.0                      /* Size of visual field */
+#define DIAG   (sqrt(2.0) * WIDTH / 2.0) /* Half diagonal size of square */
 
 #define LIMIT_MOVE(m, var, negLimit, negNew, posLimit, posNew)                                                         \
     do {                                                                                                               \
@@ -51,18 +51,26 @@ static void glInitLogo()
     /* Set projection */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-VISION * (GLfloat)g_width / (GLfloat)g_height, VISION * (GLfloat)g_width / (GLfloat)g_height, -VISION,
-            VISION, -100, 100);
+    glOrtho(-VISION * (GLfloat)g_width / (GLfloat)g_height,
+            VISION * (GLfloat)g_width / (GLfloat)g_height,
+            -VISION,
+            VISION,
+            -100,
+            100);
 }
 
 static void vertexPair(float theta, float phi)
 {
-    glColor4f((1.0 + sin(theta / 4.0)) / 2.0, (1.0 + sin(theta / 4.0 + 2.0 * PI / 3.0)) / 2.0,
-              (1.0 + sin(theta / 4.0 + 4.0 * PI / 3.0)) / 2.0, 1.0);
-    glVertex3f((RADIUS + DIAG * cos(phi + PI / 4.0)) * cos(theta), (RADIUS + DIAG * cos(phi + PI / 4.0)) * sin(theta),
+    glColor4f((1.0 + sin(theta / 4.0)) / 2.0,
+              (1.0 + sin(theta / 4.0 + 2.0 * PI / 3.0)) / 2.0,
+              (1.0 + sin(theta / 4.0 + 4.0 * PI / 3.0)) / 2.0,
+              1.0);
+    glVertex3f((RADIUS + DIAG * cos(phi + PI / 4.0)) * cos(theta),
+               (RADIUS + DIAG * cos(phi + PI / 4.0)) * sin(theta),
                DIAG * sin(phi + PI / 4.0));
     glVertex3f((RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * cos(theta),
-               (RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * sin(theta), DIAG * sin(phi + 3.0 * PI / 4.0));
+               (RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * sin(theta),
+               DIAG * sin(phi + 3.0 * PI / 4.0));
 }
 
 static void glDrawLogo()

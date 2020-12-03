@@ -12,8 +12,8 @@
 #include <time.h>
 
 #define FILE_COUNT_BLOCK 256
-#define TIME_BUF_LEN 64
-#define TIME_FORMAT "%y-%m-%d"
+#define TIME_BUF_LEN     64
+#define TIME_FORMAT      "%y-%m-%d"
 
 #define IS_DIR(f) (((f)->attrib & _A_SUBDIR) == _A_SUBDIR)
 

@@ -10,14 +10,14 @@
 #include <stdio.h>
 #include <windows.h>
 
-#define SX 64
-#define SY 64
-#define WX (SX * 10)
-#define WY (SY * 15)
-#define PX SX
-#define PY SY
+#define SX      64
+#define SY      64
+#define WX      (SX * 10)
+#define WY      (SY * 15)
+#define PX      SX
+#define PY      SY
 #define Y_START 65
-#define Y_END 80
+#define Y_END   80
 
 static HFONT g_hFont = NULL;
 static HPEN g_hPen = NULL;
@@ -192,8 +192,17 @@ int WINAPI WinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR cmd, int show)
     wce.lpszClassName = wndClassName;
     wce.hIconSm = NULL;
     RegisterClassEx(&wce);
-    hWnd = CreateWindow(wndClassName, TEXT("GDI Draw"), WS_TILEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-                        CW_USEDEFAULT, NULL, NULL, hIns, 0);
+    hWnd = CreateWindow(wndClassName,
+                        TEXT("GDI Draw"),
+                        WS_TILEDWINDOW,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        CW_USEDEFAULT,
+                        NULL,
+                        NULL,
+                        hIns,
+                        0);
     if (hWnd != NULL) {
         ShowWindow(hWnd, show);
         for (; GetMessage(&msg, NULL, 0, 0);) {

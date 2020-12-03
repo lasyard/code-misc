@@ -11,10 +11,10 @@
 #define BUF_SIZE 127
 
 #define FLOOR 0x00000000
-#define WALL 0x00000001
-#define GOAL 0x00000002
-#define BOX 0x00010000
-#define MAN 0x00020000
+#define WALL  0x00000001
+#define GOAL  0x00000002
+#define BOX   0x00010000
+#define MAN   0x00020000
 
 struct level {
     int map_x, map_y;

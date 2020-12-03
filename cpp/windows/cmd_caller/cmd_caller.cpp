@@ -50,8 +50,8 @@ HRESULT CmdCaller::run(char *strCmd)
     startInfo.hStdInput = 0;
     startInfo.hStdOutput = hStdoutWrite;
     startInfo.hStdError = hStderrWrite;
-    bSuccess = CreateProcess(NULL, strCmd, NULL, NULL, TRUE, CREATE_NO_WINDOW | NORMAL_PRIORITY_CLASS, NULL, NULL,
-                             &startInfo, &procInfo);
+    bSuccess = CreateProcess(
+        NULL, strCmd, NULL, NULL, TRUE, CREATE_NO_WINDOW | NORMAL_PRIORITY_CLASS, NULL, NULL, &startInfo, &procInfo);
     if (!bSuccess) {
         CloseHandle(hStdoutRead);
         CloseHandle(hStdoutWrite);

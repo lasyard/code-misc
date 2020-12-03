@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX_NUMBER 100
+#define MAX_NUMBER  100
 #define MAX_MAPPING 256
 
 static int e[MAX_NUMBER];  /* Stores equivalent of each number */

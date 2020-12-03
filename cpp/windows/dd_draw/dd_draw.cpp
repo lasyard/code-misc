@@ -22,8 +22,14 @@ static void drawOneSixthPie(HDC hDC, int x, int y, int radius, double angle, COL
 {
     SetDCBrushColor(hDC, color);
     SetDCPenColor(hDC, color);
-    Pie(hDC, x - radius, y - radius, x + radius, y + radius, x + (int)(radius * cos(angle)),
-        y - (int)(radius * sin(angle)), x + (int)(radius * cos(angle + PI / 3.0)),
+    Pie(hDC,
+        x - radius,
+        y - radius,
+        x + radius,
+        y + radius,
+        x + (int)(radius * cos(angle)),
+        y - (int)(radius * sin(angle)),
+        x + (int)(radius * cos(angle + PI / 3.0)),
         y - (int)(radius * sin(angle + PI / 3.0)));
 }
 
@@ -99,7 +105,10 @@ void ddDraw(HWND hWnd)
         RECT rect;
         GetClientRect(hWnd, &rect);
         FillRect(hDC, &rect, (HBRUSH)GetStockObject(BLACK_BRUSH));
-        drawPie(hDC, (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2, g_radius,
+        drawPie(hDC,
+                (rect.right - rect.left) / 2,
+                (rect.bottom - rect.top) / 2,
+                g_radius,
                 (double)index * 2.0 * PI / (double)g_speed);
         SetBkMode(hDC, TRANSPARENT);
         SetTextColor(hDC, RGB(0, 255, 0));

@@ -20,9 +20,9 @@ static int map[7][7] = {
     };
 /* clang-format on */
 
-#define VALID(x, y) (0 <= (x) && (x) < 7 && 0 <= (y) && (y) < 7)
-#define OCCUPIED(x, y) (VALID(x, y) && map[y][x] == 1)
-#define VACANCY(x, y) (VALID(x, y) && map[y][x] == 0)
+#define VALID(x, y)            (0 <= (x) && (x) < 7 && 0 <= (y) && (y) < 7)
+#define OCCUPIED(x, y)         (VALID(x, y) && map[y][x] == 1)
+#define VACANCY(x, y)          (VALID(x, y) && map[y][x] == 0)
 #define CAN_MOVE(x, y, dx, dy) (VACANCY((x) + 2 * (dx), (y) + 2 * (dy)) && OCCUPIED((x) + (dx), (y) + (dy)))
 
 static struct jump jump[32];

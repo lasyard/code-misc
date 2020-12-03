@@ -10,8 +10,8 @@
 
 #define random(x) (rand() % (x))
 
-#define MAP_Y 20
-#define MAP_X 40
+#define MAP_Y       20
+#define MAP_X       40
 #define MINE_NUMBER 120
 
 #define BASE_LINE (MAP_Y + 4)

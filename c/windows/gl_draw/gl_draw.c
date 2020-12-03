@@ -6,22 +6,22 @@
 
 #pragma warning(disable : 4305 4244) /* disable double to float warning */
 
-#define PI 3.1415926
+#define PI     3.1415926
 #define Z_NEAR 0.5
-#define Z_FAR 100.0
+#define Z_FAR  100.0
 
 /* Parameter of cube */
 #define TEX_HEIGHT 64
-#define TEX_WIDTH 64
-#define CUBE_NUM 3
-#define CUBE_LONG 2.0
+#define TEX_WIDTH  64
+#define CUBE_NUM   3
+#define CUBE_LONG  2.0
 
 /* Parameter of logo */
-#define WIDTH 2.5                      /* Size of square */
-#define RADIUS 5.0                     /* Radius of logo */
-#define SLICE 500                      /* Number of slices */
-#define VISION 10.0                    /* Size of visual field */
-#define DIAG (sqrt(2.0) * WIDTH / 2.0) /* Half diagonal size of square */
+#define WIDTH  2.5                       /* Size of square */
+#define RADIUS 5.0                       /* Radius of logo */
+#define SLICE  500                       /* Number of slices */
+#define VISION 10.0                      /* Size of visual field */
+#define DIAG   (sqrt(2.0) * WIDTH / 2.0) /* Half diagonal size of square */
 
 struct Xyzi {
     int x, y, z;
@@ -110,8 +110,18 @@ static void glInitCube()
 static void glDrawSquare(GLfloat r, GLfloat g, GLfloat b)
 {
     static GLfloat vData[] = {
-        -CUBE_LONG / 2.0, -CUBE_LONG / 2.0, 0, +CUBE_LONG / 2.0, -CUBE_LONG / 2.0, 0,
-        +CUBE_LONG / 2.0, +CUBE_LONG / 2.0, 0, -CUBE_LONG / 2.0, +CUBE_LONG / 2.0, 0,
+        -CUBE_LONG / 2.0,
+        -CUBE_LONG / 2.0,
+        0,
+        +CUBE_LONG / 2.0,
+        -CUBE_LONG / 2.0,
+        0,
+        +CUBE_LONG / 2.0,
+        +CUBE_LONG / 2.0,
+        0,
+        -CUBE_LONG / 2.0,
+        +CUBE_LONG / 2.0,
+        0,
     };
     static GLint pData[] = {0, 1, 2, 3};
     static GLfloat texSEq[] = {1.0, 0.0, 0.0, 0.0};
@@ -183,18 +193,26 @@ static void glInitLogo()
     /* Set projection */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-VISION * (GLfloat)g_width / (GLfloat)g_height, VISION * (GLfloat)g_width / (GLfloat)g_height, -VISION,
-            VISION, -100, 100);
+    glOrtho(-VISION * (GLfloat)g_width / (GLfloat)g_height,
+            VISION * (GLfloat)g_width / (GLfloat)g_height,
+            -VISION,
+            VISION,
+            -100,
+            100);
 }
 
 static void vertexPair(float theta, float phi)
 {
-    glColor4f((1.0 + sin(theta / 4.0)) / 2.0, (1.0 + sin(theta / 4.0 + 2.0 * PI / 3.0)) / 2.0,
-              (1.0 + sin(theta / 4.0 + 4.0 * PI / 3.0)) / 2.0, 1.0);
-    glVertex3f((RADIUS + DIAG * cos(phi + PI / 4.0)) * cos(theta), (RADIUS + DIAG * cos(phi + PI / 4.0)) * sin(theta),
+    glColor4f((1.0 + sin(theta / 4.0)) / 2.0,
+              (1.0 + sin(theta / 4.0 + 2.0 * PI / 3.0)) / 2.0,
+              (1.0 + sin(theta / 4.0 + 4.0 * PI / 3.0)) / 2.0,
+              1.0);
+    glVertex3f((RADIUS + DIAG * cos(phi + PI / 4.0)) * cos(theta),
+               (RADIUS + DIAG * cos(phi + PI / 4.0)) * sin(theta),
                DIAG * sin(phi + PI / 4.0));
     glVertex3f((RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * cos(theta),
-               (RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * sin(theta), DIAG * sin(phi + 3.0 * PI / 4.0));
+               (RADIUS + DIAG * cos(phi + 3.0 * PI / 4.0)) * sin(theta),
+               DIAG * sin(phi + 3.0 * PI / 4.0));
 }
 
 static void glDrawLogo()

@@ -1,13 +1,13 @@
 #ifndef _RAW_MOUSE_H_
 #define _RAW_MOUSE_H_
 
-#define RAW_MOUSE_LEFT_DOWN (WM_USER + 1)
-#define RAW_MOUSE_LEFT_UP (WM_USER + 2)
+#define RAW_MOUSE_LEFT_DOWN   (WM_USER + 1)
+#define RAW_MOUSE_LEFT_UP     (WM_USER + 2)
 #define RAW_MOUSE_MIDDLE_DOWN (WM_USER + 3)
-#define RAW_MOUSE_MIDDLE_UP (WM_USER + 4)
-#define RAW_MOUSE_RIGHT_DOWN (WM_USER + 5)
-#define RAW_MOUSE_RIGHT_UP (WM_USER + 6)
-#define RAW_MOUSE_MOVE (WM_USER + 7)
+#define RAW_MOUSE_MIDDLE_UP   (WM_USER + 4)
+#define RAW_MOUSE_RIGHT_DOWN  (WM_USER + 5)
+#define RAW_MOUSE_RIGHT_UP    (WM_USER + 6)
+#define RAW_MOUSE_MOVE        (WM_USER + 7)
 
 #define sz_RAW_MOUSE_STATE 8
 #define GET_MOUSE_INDEX(x) ((int)((x) >> sz_RAW_MOUSE_STATE))

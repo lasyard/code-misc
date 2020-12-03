@@ -161,8 +161,17 @@ int WINAPI WinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR cmd, int show)
     wce.lpszClassName = wndClassName;
     wce.hIconSm = NULL;
     RegisterClassEx(&wce);
-    hWnd = CreateWindow(wndClassName, TEXT("OpenGL Test"), WS_POPUP, 0, 0, GetSystemMetrics(SM_CXSCREEN),
-                        GetSystemMetrics(SM_CYSCREEN), NULL, NULL, hIns, 0);
+    hWnd = CreateWindow(wndClassName,
+                        TEXT("OpenGL Test"),
+                        WS_POPUP,
+                        0,
+                        0,
+                        GetSystemMetrics(SM_CXSCREEN),
+                        GetSystemMetrics(SM_CYSCREEN),
+                        NULL,
+                        NULL,
+                        hIns,
+                        0);
     if (hWnd != NULL) {
         ShowWindow(hWnd, show);
         for (;;) {
