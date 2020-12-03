@@ -6,6 +6,11 @@ if [ -d "${HOME}/bin" ]; then
     fi
 fi
 
+# MySql
+if [ -d "/usr/local/mysql/bin" ]; then
+    PATH="${PATH}:/usr/local/mysql/bin"
+fi
+
 # Set aliases
 alias md='mkdir -p'
 alias rd='rmdir'
