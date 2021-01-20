@@ -7,7 +7,7 @@ for formula in \
     p7zip \
     rsync \
     tree \
-    unrar \
+    gpg2 \
     wget; do
     brew install "${formula}"
 done
