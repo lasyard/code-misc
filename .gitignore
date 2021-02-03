@@ -1,6 +1,13 @@
 .*
 !.gitignore
 !.editorconfig
+!.clang-format
+
+# C/C++
+*.o
+*.a
+*.exe
+*.out
 
 # IntelliJ IDEA
 !.idea/
