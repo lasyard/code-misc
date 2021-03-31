@@ -14,6 +14,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set magic
+set background=dark
 
 if has("gui_running")
     set guioptions=aemgTRb
@@ -37,6 +38,7 @@ endif
 if has("autocmd")
     filetype indent on
     filetype plugin on
+    autocmd BufNewFile,BufRead *.dict setlocal noexpandtab tabstop=16
 endif
 
 if !exists("syntax_on")

@@ -8,6 +8,7 @@ for formula in \
     rsync \
     tree \
     gpg2 \
-    wget; do
+    wget \
+    cmake; do
     brew install "${formula}"
 done
