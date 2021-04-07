@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-INPUT_VIDEO_FILE=
-OUTPUT_VIDEO_FILE=
+declare -a INPUT_VIDEO_FILES
 
 if [[ $# -lt 1 ]]; then
-    echo "Usage: $0 [-crf 23] [-crop] [-size 1280x720] [-nohqdn] <File Name>"
+    echo "Usage: $0 [-crf 23] [-crop] [-size 1280x720] [-nohqdn] <File...>"
     exit 1
 fi
 
@@ -41,29 +40,15 @@ for ((i = 1; i <= $#; ++i)); do
         exit 1
         ;;
     *)
-        if [[ -z "${INPUT_VIDEO_FILE}" ]]; then
-            INPUT_VIDEO_FILE="${!i}"
-        elif [[ -z "${OUTPUT_VIDEO_FILE}" ]]; then
-            OUTPUT_VIDEO_FILE="${!i}"
-        else
-            echo "Extra parameter \"${!i}\" found. A mistake?"
-            exit 1
-        fi
+        INPUT_VIDEO_FILES+=("${!i}")
         ;;
     esac
 done
 
-if [[ -z "${INPUT_VIDEO_FILE}" ]]; then
+if [[ -z "${INPUT_VIDEO_FILES[*]}" ]]; then
     echo "Please specify the input file."
     exit 1
 fi
-
-if [[ -z "${OUTPUT_VIDEO_FILE}" ]]; then
-    OUTPUT_VIDEO_FILE="out.mp4"
-fi
-
-echo "Input file is ${INPUT_VIDEO_FILE}."
-echo "Output file is ${OUTPUT_VIDEO_FILE}."
 
 if [[ -z "${CRFSET}" ]]; then
     OPTS+=("-crf")
@@ -82,6 +67,11 @@ if [[ -n "${VIDEO_FILTERS}" ]]; then
     OPTS+=("${VIDEO_FILTERS}")
 fi
 
-set -x
-
-ffmpeg -i "${INPUT_VIDEO_FILE}" "${OPTS[@]}" "${OUTPUT_VIDEO_FILE}"
+for f in "${INPUT_VIDEO_FILES[@]}"; do
+    IN_FILE="$f"
+    OUT_FILE="${f%.*}-out.mp4"
+    echo "Encoding file \"${IN_FILE}\" to \"${OUT_FILE}\"..."
+    set -x
+    ffmpeg -i "${IN_FILE}" "${OPTS[@]}" "${OUT_FILE}"
+    set +x
+done
