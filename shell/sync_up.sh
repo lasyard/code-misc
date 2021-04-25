@@ -20,7 +20,7 @@ else
     SOURCE_PATH="${SOURCE_PATH}/"
 fi
 
-RSYNC_ARGS="--iconv utf-8-mac,utf-8 --exclude=.DS_Store -RvrutO ${EXTRA_OPTS} --modify-window=3"
+RSYNC_ARGS="--iconv utf-8-mac,utf-8 --exclude=.* -RvrutO ${EXTRA_OPTS} --modify-window=3"
 
 # dry run
 # shellcheck disable=SC2086
