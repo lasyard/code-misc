@@ -6,8 +6,11 @@ if [ $# -lt 1 ]; then
 fi
 
 for file in "$@"; do
-    DATE="$(date -j -f "%s" "+%Y:%m:%d %H:%M:%S" "$(basename "${file}" | grep -o -E '\d{10}')")"
-    echo "Change date of ${file} to ${DATE}."
-    # shellcheck disable=SC2016
-    exiftool -ext jpg -if 'not ${DateTimeOriginal}' -AllDates="${DATE}" -overwrite_original "${file}"
+    DIGIT="$(basename "${file}" | grep -o -E '\d{10}')"
+    if [ -n "${DIGIT}" ]; then
+        DATE="$(date -j -f "%s" "+%Y:%m:%d %H:%M:%S" "${DIGIT}")"
+        echo "Change date of ${file} to ${DATE}."
+        # shellcheck disable=SC2016
+        exiftool -ext jpg -if 'not ${DateTimeOriginal}' -AllDates="${DATE}" -overwrite_original "${file}"
+    fi
 done
