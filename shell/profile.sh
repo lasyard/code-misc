@@ -43,7 +43,7 @@ if [ "$(uname)" = "Darwin" ]; then
         export FCEDIT=vim
     fi
     if command -v 'brew' >/dev/null; then
-        export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+        # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
     fi
     if [ -d "/usr/local/opt/gettext/bin" ]; then
         PATH="/usr/local/opt/gettext/bin:${PATH}"
