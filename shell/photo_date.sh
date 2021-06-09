@@ -5,12 +5,17 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+DATE_FMT="+%Y:%m:%d %H:%M:%S"
+
 for file in "$@"; do
     DIGIT="$(basename "${file}" | grep -o -E '\d{10}')"
     if [ -n "${DIGIT}" ]; then
-        DATE="$(date -j -f "%s" "+%Y:%m:%d %H:%M:%S" "${DIGIT}")"
-        echo "Change date of ${file} to ${DATE}."
-        # shellcheck disable=SC2016
-        exiftool -ext jpg -if 'not ${DateTimeOriginal}' -AllDates="${DATE}" -overwrite_original "${file}"
+        DATE="$(date -j -f "%s" "${DATE_FMT}" "${DIGIT}")"
+        echo "Change date of ${file} to ${DATE}, derived from timestamp."
+    else
+        DATE="$(date -r "${file}" "${DATE_FMT}")"
+        echo "Change date of ${file} to ${DATE}, derived from modification time."
     fi
+    # shellcheck disable=SC2016
+    exiftool -ext jpg -if 'not ${DateTimeOriginal}' -AllDates="${DATE}" -overwrite_original "${file}"
 done
